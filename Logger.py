@@ -12,11 +12,12 @@ class Logger:
     func = "(func not set)"
     tab = "  "  # for saving space purpose tab is 2 spaces
 
-    def __init__(self, module, add_tabs=0, show_logs=True, show_warnings=True):
+    def __init__(self, module, account, add_tabs=0, show_logs=True, show_warnings=True):
         self.add_tabs = add_tabs
         self.module = module
         self.show_logs = show_logs
         self.show_warnings = show_warnings
+        self.log(account, "Logger initialised in this module.")
 
     def set_func(self, func):
         """Sets func in message to this value. Custom parameter in message will use custom but won't override it."""
