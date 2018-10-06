@@ -1,25 +1,43 @@
+"""How to write logs for FairyBotPro.
+1) Start at the start of a function.
+2) Finish at the end of function.
+3) Result of any action/request.
+"""
+
 import Tool
 import datetime
 
 
 class Logger:
-    def __init__(self,module, additional_indent=0, show_logs=True):
-        self.additional_indent = additional_indent
+    func = "(func not set)"
+    tab = "  "  # for saving space purpose tab is 2 spaces
+
+    def __init__(self, module, add_tabs=0, show_logs=True, show_warnings=True):
+        self.add_tabs = add_tabs
         self.module = module
         self.show_logs = show_logs
+        self.show_warnings = show_warnings
 
-    def log(self, indent, place, text):
-        Tool.Sprint(self._message(indent, place, text))
+    def set_func(self, func):
+        """Sets func in message to this value. Custom parameter in message will use custom but won't override it."""
+        self.func = func
 
-    def warning(self, indent, place, text):
-        Tool.Sprint("!!! " + self._message(indent, place, text))
+    def log(self, account, text, func=None, tabs=0):
+        if self.show_logs:
+            Tool.Sprint("... " + self._message(self, account, text, func, tabs))
 
-    def error(self, indent, place, text):
-        Tool.Sprint("-->" + self._message(indent, place, text))
+    def warning(self, account, text, func=None, tabs=0):
+        if self.show_warnings:
+            Tool.Sprint("!!! " + self._message(self, account, text, func, tabs))
+
+    def error(self, account, text, func=None, tabs=0):
+        Tool.Sprint("ERR " + self._message(self, account, text, func, tabs))
         exit()  # TODO: check if that thing will stop thread or whole script or probably just throw exception
 
-    def _message(self, indent, place, text):
-        time_string = datetime.datetime.now().strftime('%d-%m-%Y %H:%M:%S')
-        whole_text = "{} | {}{}({}): {}".format(time_string, (
-                self.additional_indent + indent) * "\t", self.module, place, text)
-        return whole_text
+    def _message(self, account, text, func, tabs):
+        time_string = datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S')
+        if func is None:
+            func = self.func
+        text = "{}[{}] {}{}({}): {}".format(
+            time_string, account.email, (self.add_tabs + tabs) * self.tab, self.module, func, text)
+        return text
