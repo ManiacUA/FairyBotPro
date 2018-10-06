@@ -14,8 +14,8 @@ class TripwireError(Exception):
 
 class Reporter:
     def __init__(self, account):
+        self.logger = Logger.Logger("Tripwire2.Reporter", account)
         self.account = account
-        self.logger = Logger.Logger("Tripwire2.Reporter")
         self.telegram = Telegram.Telegram()
 
     def run(self, account):

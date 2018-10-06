@@ -1,7 +1,13 @@
 """How to write logs for FairyBotPro.
+What should be logged:
 1) Start at the start of a function.
 2) Finish at the end of function.
 3) Result of any action/request.
+
+Rules:
+1) Logs initialisation should be first step of initialisation of module;
+2) Entities should never be monitored;
+3) Modules should have add_tabs=1, functions should increase their tabs when called one inside another
 """
 
 import Tool
