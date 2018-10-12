@@ -11,6 +11,7 @@ Rules:
 
 from collections import deque
 import datetime
+import Tool
 
 
 class Logger:
@@ -60,4 +61,6 @@ class Logger:
                                               self.module,
                                               self.func[len(self.func)-1],
                                               text)
-        return text
+
+        text = Tool.surrogate_decoding(text)
+        print(text)

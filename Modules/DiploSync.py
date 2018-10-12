@@ -1,4 +1,4 @@
-from Class import Player
+from WorldAccount import WorldAccount
 import time
 # DipSyncPixar3259@gmail.com
 # DipSyncTale3259@gmail.com
@@ -32,7 +32,7 @@ def sync_diplo(diplo_from, id_from, id_to, account_to, diplo_to):
 
 
 def read_diplo(email, password):
-    account = Player(email, password, 0)
+    account = WorldAccount(email, password, 0)
     while not account.smart_enter()[0]:
         print("oooops, relogining for email {} in 5 secs...".format(email))
         time.sleep(5)

@@ -1,4 +1,4 @@
-import Class
+import WorldAccount
 import time
 from collections import deque
 import threading
@@ -55,7 +55,7 @@ def main():
 def enter_all_accounts(accounts_data_inn):
     accounts = []
     for account_data_one in accounts_data_inn:
-        account = Class.Player(account_data_one[0], account_data_one[1])
+        account = WorldAccount.WorldAccount(account_data_one[0], account_data_one[1])
         account.smart_enter()
         accounts.append(account)
     return accounts

@@ -1,4 +1,4 @@
-import Class
+import WorldAccount
 import time
 import Tool
 import random
@@ -38,7 +38,7 @@ def funct1():
 
 def funct2():
     alliance_habitat_id_array = []
-    account = Class.Player("bantikru15@bk.ru", "130206")
+    account = WorldAccount.WorldAccount("bantikru15@bk.ru", "130206")
     players = []
     enter_account_result = account.gui_enter_account()
 
@@ -117,7 +117,7 @@ def funct2():
 
 
 def funct3():
-    account = Class.Player("frog@mail.ru", "daneg")
+    account = WorldAccount.WorldAccount("frog@mail.ru", "daneg")
     result = account.gui_enter_account()
     for name in result[1]["Data"]["Habitat"]:
         print(name)
@@ -126,7 +126,7 @@ def funct3():
 def funct4(unit_dic):
     habitat_id_to_use = None
     alliance_habitat_id_array = []
-    account = Class.Player("chromebrutus3259@gmail.com", "3259")
+    account = WorldAccount.WorldAccount("chromebrutus3259@gmail.com", "3259")
     players = []
     enter_account_result = account.gui_enter_account()
     for element in enter_account_result[1]["Data"]["Player"]:
@@ -276,7 +276,7 @@ def funct4(unit_dic):
 
 def funct5():
     alliance_habitat_id_array = []
-    account = Class.Player("syjw@list.ru", "130206")
+    account = WorldAccount.WorldAccount("syjw@list.ru", "130206")
     players = []
     enter_account_result = account.gui_enter_account()
     # СП
@@ -289,7 +289,7 @@ def funct5():
 
 
 def funct6():
-    account = Class.Player("talt01@gmail.com", "passz")
+    account = WorldAccount.WorldAccount("talt01@gmail.com", "passz")
     account.smart_enter()
     alliances_to_tripwire = []
     this_player_id = account.header_info['playerID']

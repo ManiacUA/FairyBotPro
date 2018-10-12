@@ -1,4 +1,4 @@
-import Class
+import WorldAccount
 from tkinter import *
 
 
@@ -79,7 +79,7 @@ class AccountFrame:
 
     def button_clicked(self, event):
         self.read_entries()
-        self.account_class = Class.Player(self.email, self.password)
+        self.account_class = WorldAccount.WorldAccount(self.email, self.password)
         if not self.working:
             result = self.check()
             if result[0]:  # if everything is correct - start repeating

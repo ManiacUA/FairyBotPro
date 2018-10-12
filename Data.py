@@ -16,7 +16,9 @@ tripwire_data = {
     "tripwire_size": 5,
     "trips_source": 21597,  # choose it by habitat link
     "discussion_id": 23502,
-    "email": "m2222222@bk.ru",
-    "password": "22222",
-    "alert_coefficient": 0.21  # 1/5 will not trigger while 1/4- and 2+/5 will
+    "email": "Fir.hunters@mail.ru",
+    "password": "32594398",
+    "alert_coefficient": 0.21,  # 1/5 will not trigger while 1/4- and 2+/5 will
+    "player_ids_exclude_list": [],
+    "player_ids_include_list": []
 }

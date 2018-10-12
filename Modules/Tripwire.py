@@ -1,4 +1,4 @@
-import Class
+import WorldAccount
 import Tool
 import Data
 import time
@@ -9,7 +9,7 @@ logger = Logger.Logger("Tripwire")
 from Entities.Report import Report
 
 def main(email, password):
-    account = Class.Player(email, password, 1)
+    account = WorldAccount.WorldAccount(email, password, 1)
     login_result = account.smart_enter()
     counter = 2  # times to replace tripwires
     while True:

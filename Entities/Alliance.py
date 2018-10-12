@@ -12,7 +12,7 @@ class Alliance:
             self.id = alliance_dict["id"]
 
         if "name" in alliance_dict:
-            self.id = alliance_dict["name"]
+            self.name = alliance_dict["name"]
 
         self._calc_link()
 
@@ -29,4 +29,13 @@ class Alliance:
         relationship_num_to_word = {"-1": "red", "1": "blue", "2": "green", "3": "orange"}
         self.diplomacy = {}
         for diplomacy_rel in diplomacy_dict:
-            self.diplomacy[diplomacy_rel["id"]] = relationship_num_to_word[diplomacy_rel["relationship"]]
+            self_alliance, target_alliance = diplomacy_rel['id'].split('-')
+            self.diplomacy[target_alliance] = relationship_num_to_word[diplomacy_rel["relationship"]]
+
+    def get_diplomacy_by_color(self, color):
+        ids = []
+        for alliance_id in self.diplomacy:
+            alliance_rel = self.diplomacy[alliance_id]
+            if alliance_rel == color:
+                ids.append(alliance_id)
+        return ids
