@@ -9,7 +9,7 @@ Rules:
 2) Entities should never be monitored;
 """
 
-import Tool
+from collections import deque
 import datetime
 
 
@@ -21,8 +21,7 @@ class Logger:
         self.show_logs = show_logs
         self.show_warnings = show_warnings
         self.email = account.email
-        self.depth = 0
-        self.func = None
+        self.func = deque()
         self.log_func_start('__init__')
         self.log_func_finish()
 
@@ -35,15 +34,14 @@ class Logger:
             self._message(text=text, pretext='...')
 
     def log_func_start(self, func):
-        self.depth += 1
+        self.func.append(func)
         if self.show_logs:
             self.log("Started.")
 
     def log_func_finish(self):
         if self.show_logs:
             self.log("Finished.")
-        self.depth -= 1
-        self.func = None
+        self.func.pop()
 
     def warning(self, text):
         if self.show_warnings:
@@ -59,8 +57,8 @@ class Logger:
         text = "{}{}[{}] {}{}({}): {}".format(pretext,
                                               time_string,
                                               self.email,
-                                              self.depth * self.tab,
+                                              len(self.func) * self.tab,
                                               self.module,
-                                              self.func,
+                                              self.func[len(self.func)-1],
                                               text)
         return text
