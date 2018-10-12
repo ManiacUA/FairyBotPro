@@ -49,7 +49,7 @@ class Logger:
 
     def error(self, text):
         self._message(text=text, pretext='<ERROR>')
-        exit()  # TODO: check if that thing will stop thread or whole script, need to stop thread only
+        raise ValueError(text)
 
     def _message(self, text, pretext=""):
         self.check_func()
