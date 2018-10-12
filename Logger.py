@@ -23,7 +23,6 @@ class Logger:
         self.email = account.email
         self.func = deque()
         self.log_func_start('__init__')
-        self.log_func_finish()
 
     def check_func(self):
         if not self.func:
@@ -57,7 +56,7 @@ class Logger:
         text = "{}{}[{}] {}{}({}): {}".format(pretext,
                                               time_string,
                                               self.email,
-                                              len(self.func) * self.tab,
+                                              (len(self.func)-1) * self.tab,
                                               self.module,
                                               self.func[len(self.func)-1],
                                               text)
